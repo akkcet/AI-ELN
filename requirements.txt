@@ -1,0 +1,38 @@
+# --------------------
+# Core Backend
+# --------------------
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-multipart
+pydantic
+alembic
+
+# --------------------
+# AI Modules
+# --------------------
+openai
+rdkit
+
+# --------------------
+# PDF Export
+# --------------------
+reportlab
+
+# --------------------
+# Frontend (Streamlit UI)
+# --------------------
+streamlit
+
+# --------------------
+# Utilities
+# --------------------
+requests
+pandas
+python-dotenv
+openpyxl
+pubchempy
+PyPDF2
+aiofiles
+streamlit_navigation_bar

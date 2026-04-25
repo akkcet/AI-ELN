@@ -1,0 +1,190 @@
+
+<!-- ========================
+ TOP TOOLBAR
+======================== -->
+<div class="toolbar">
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="data:image/jpeg;base64,{{LOGO_B64}}" />
+  </div>
+
+  <!-- Title -->
+  <div class="left">
+    <div class="row-top">
+      <span class="title">Notebook</span>
+    </div>
+    <div class="row-bottom">
+      <span class="home">🏠 Home</span>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="center">
+    <button class="cog-btn" onclick="navigate('Admin')">⚙️</button>
+    <span class="separator">|</span>
+    <input id="searchBox" placeholder="Search in All Experiments">
+    <button type="button" onclick="search()">🔍</button>
+    <button onclick="nav('Advanced')">Advanced</button>
+  </div>
+
+  <!-- Right icons -->
+  <div class="right">
+    <button onclick="goHome()">🏠</button>
+    <button onclick="toggleNotif()">🌍</button>
+    <button onclick="nav('profile')">👤</button>
+  </div>
+
+</div>
+
+<!-- ========================
+ APP SHELL
+======================== -->
+
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <span class="hamburger" onclick="toggleSidebar()">
+        
+        <svg width="18" height="14" viewBox="0 0 18 14">
+            <rect width="18" height="2" y="0"></rect>
+            <rect width="18" height="2" y="6"></rect>
+            <rect width="18" height="2" y="12"></rect>
+        </svg>
+        
+        
+      </span>
+    </div>
+
+    <div class="sidebar-body">
+      
+        <div class="menu-group">
+        <div class="menu-header" onclick="toggleSection(this)">
+            <span class="chevron"></span>
+            <span class="menu-title">My Notebook</span>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">Me as Author</div>
+            <div class="menu-item">Shared with Me</div>
+            
+            <div class="menu-item">Me to Lock</div>
+            <div class="menu-item">Personal Templates</div>
+            <div class="menu-item">My Projects</div>
+
+        </div>
+        </div>
+        <div class="menu-group">
+        <div class="menu-header" onclick="toggleSection(this)">
+            <span class="chevron"></span>
+            <span class="menu-title">My Submissions</span>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">Me to Submit</div>
+            <div class="menu-item">Me to Sign</div>
+            
+            <div class="menu-item">Rejected by Co-Signer</div>
+            <div class="menu-item">Waiting for Co-Signer</div>
+            <div class="menu-item">Submitted by Me</div>
+            <div class="menu-item">Co-Signed by Me</div>
+        </div>
+        </div>
+        <div class="menu-group">
+        <div class="menu-header" onclick="toggleSection(this)">
+            <span class="chevron"></span>
+            <span class="menu-title">All Notebooks</span>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">All Experiments</div>
+            <div class="menu-item">Public Templates</div>
+            
+            <div class="menu-item">All Projects</div>
+            
+        </div>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    {{CONTENT}}
+  </div>
+
+</div>
+
+<!-- ========================
+ GLOBAL JS (ONE PLACE)
+======================== -->
+<script>
+  function search() {
+    const q = document.getElementById("searchBox").value.trim();
+    if (!q) return;
+    window.location.href = "?page=search&q=" + encodeURIComponent(q);
+  }
+
+  function nav(page) {
+    window.location.href = "?page=" + page;
+  }
+  
+  function goHome() {
+    // Explicitly go to Home1 page
+    window.location.href = "?page=home";
+  }
+
+
+  function toggleNotif() {
+    const n = document.getElementById("notif");
+    n.style.display = n.style.display === "block" ? "none" : "block";
+  }
+</script>
+<style>
+/* -------------------------------
+    HARD STOP: Streamlit outer scroll
+    ------------------------------- */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden !important;
+}
+
+/* Streamlit root containers */
+.stApp,
+.stAppViewContainer,
+[data-testid="stAppViewContainer"] {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+/* Main Streamlit content wrapper */
+.block-container {
+    padding-top: 0 !important;
+    max-width: 100vw !important; 
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+    overflow: hidden !important;
+
+}
+
+/* Prevent iframe from introducing scroll */
+iframe {
+    display: block;
+    border: none;
+    z-index: 9999 !important;
+}
+/* Remove Streamlit UI */
+#MainMenu, header, footer {
+    visibility: hidden;
+}
+
+/* Remove top padding */
+
+
+/* Disable Streamlit overlay blocking clicks */
+
+</style>

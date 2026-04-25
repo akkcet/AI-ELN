@@ -1,0 +1,36 @@
+<div class="main-inner search-page">
+
+  <div class="page-title">Experiment Search</div>
+
+  <!-- 🔹 Search actions bar -->
+  <div class="search-actions">
+    <div class="left-actions">
+      <button class="secondary-btn">Save as</button>
+      <span class="result-count">{{RESULT_COUNT}} result</span>
+    </div>
+
+    <div class="right-actions">
+      <button class="secondary-btn">Go to Experiment</button>
+      <button class="secondary-btn">Go to Submission</button>
+      <button class="secondary-btn">Export to Excel</button>
+    </div>
+  </div>
+
+  <!-- 🔹 Search results table -->
+  <table class="search-table">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Project</th>
+        <th>Type</th>
+        <th>Edited</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{SEARCH_RESULTS_ROWS}}
+    </tbody>
+  </table>
+
+</div>
